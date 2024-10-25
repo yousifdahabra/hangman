@@ -40,7 +40,15 @@ var hint_section = document.getElementById('hint-section');
 var answer_section = document.getElementById('answer-section');
 var letters = document.querySelector('.letters');
 
+answer_section.innerHTML = "-".repeat(answer.length);
+hint_section.innerHTML = hint;
 
+const divs = document.querySelectorAll('.letter');
 
+divs.forEach((div) => {
+    div.addEventListener('click', (event) => {
+        var letter = event.target.innerHTML;        
+    });
+});
 
 
