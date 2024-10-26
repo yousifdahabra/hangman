@@ -29,7 +29,14 @@ function sizeOfArray (array) {
     }
     return size;
 }
-
+//replace a character at a particular index from geeksforgeeks
+function replaceChar(origString, replaceChar, index) {
+    let firstPart = origString.substr(0, index);
+    let lastPart = origString.substr(index + 1);
+    
+    let newString = firstPart + replaceChar + lastPart;
+    return newString;
+  }
 var randm_answer = Math.floor(Math.random() * sizeOfArray(Answers));
 var hint_answer = Answers[randm_answer];
 var answer = hint_answer.answer.toUpperCase();
@@ -46,9 +53,28 @@ hint_section.innerHTML = hint;
 const divs = document.querySelectorAll('.letter');
 
 divs.forEach((div) => {
-    div.addEventListener('click', (event) => {
-        var letter = event.target.innerHTML;        
-    });
+  div.addEventListener('click', (event) => {
+        var real_live_answer = document.getElementById('answer-section');
+      var letter = event.target.innerHTML;
+      var index_char = answer.indexOf(letter);
+      console.log('real_live_answer',real_live_answer.innerHTML)
+      console.log('letter',letter)
+      console.log('index_char',index_char)
+      console.log('try_count',try_count)
+      console.log('answer',answer)
+      if(index_char >= 0){
+          real_live_answer.innerHTML = replaceChar(real_live_answer.innerHTML,letter,index_char)
+          answer = replaceChar(answer,'-',index_char)
+      }else{
+          try_count += 1
+      }
+
+      if(try_count >= 6){
+          letters.style.visibility  = "hidden";
+
+      }
+
+  });
 });
 
 
