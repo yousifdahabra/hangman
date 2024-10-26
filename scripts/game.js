@@ -49,7 +49,7 @@ function replaceChar(origString, replaceChar, index) {
   let newString = firstPart + replaceChar + lastPart;
   return newString;
 }
-
+document.getElementById('answer-section').insertAdjacentHTML('beforebegin', '<div class="answer-section" id="hint-section"></div>');
 var randm_answer = Math.floor(Math.random() * sizeOfArray(Answers));
 var hint_answer = Answers[randm_answer];
 var answer = hint_answer.answer.toUpperCase();
